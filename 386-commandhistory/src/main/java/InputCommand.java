@@ -8,6 +8,7 @@ public class InputCommand extends Command{
     @Override
     public boolean execute() {
         //todo:add code here
+        app.getEditor().appendText(app.input);
         return true;
 
     }
