@@ -9,7 +9,7 @@ public class CopyCommand extends Command {
     public boolean execute() {
         //todo:add code here
         // 保存备份并将文本复制到剪贴板
-        saveBackup();
+        //saveBackup();
         app.clipboard=app.getEditor().getText();
         return false; // 不将此命令保存到历史记录
     }
@@ -17,6 +17,9 @@ public class CopyCommand extends Command {
     public void undo() {
         //todo:add code here
         // 从备份恢复文本
-        app.getEditor().setText(app.getInput());
+        if(!app.backup.isEmpty()) {
+            String lastBackup = app.backup.pop();
+            app.getEditor().setText(lastBackup);
+        }
     }
 }

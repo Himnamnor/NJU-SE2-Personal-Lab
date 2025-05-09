@@ -1,8 +1,11 @@
+import java.util.Stack;
 
 public class Application {
     String clipboard = "";
 
     String input = "";
+
+    Stack<String> backup = new Stack<>();
 
     Editor activeEditor = new Editor();
 
@@ -36,6 +39,7 @@ public class Application {
 
         backspaceButton.setOnClick(() -> executeCommand(new BackspaceCommand(this)));
 
+        backup.push("");
     }
 
 

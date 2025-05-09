@@ -18,14 +18,17 @@ public abstract class Command {
     public void saveBackup() {
         // 实现保存备份的逻辑
         //todo:add code here
-        app.setInput(app.getEditor().getText());
+        app.backup.push(app.getEditor().getText());
     }
 
     // Restore the editor's state.
     public void undo() {
         // 实现恢复编辑器状态的逻辑
         //todo:add code here
-        app.getEditor().setText(app.input);
+        if(!app.backup.isEmpty()) {
+            String lastBackup = app.backup.pop();
+            app.getEditor().setText(lastBackup);
+        }
     }
 
     // The execution method is declared abstract to force all
