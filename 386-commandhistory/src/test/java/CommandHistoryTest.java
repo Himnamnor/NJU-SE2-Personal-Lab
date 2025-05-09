@@ -67,7 +67,46 @@ public class CommandHistoryTest {
 
     }
 
+    @Test
+    public void test5(){
+        //test input and copy and input and paste and undo
+        Application app = new Application();
 
+        app.setInput("123");
+        app.inputButton.click();
 
+        app.copyButton.click();
+
+        app.setInput("456");
+        app.inputButton.click();
+
+        app.pasteButton.click();
+
+        app.undoButton.click();
+
+        assertEquals("123456",app.getEditor().getText());
+    }
+
+    @Test
+    public void test6(){
+        //test input and copy and input and paste and undo and backspace
+        Application app = new Application();
+
+        app.setInput("123");
+        app.inputButton.click();
+
+        app.copyButton.click();
+
+        app.setInput("456");
+        app.inputButton.click();
+
+        app.pasteButton.click();
+
+        app.undoButton.click();
+
+        app.backspaceButton.click();
+
+        assertEquals("",app.getEditor().getText());
+    }
 
 }
