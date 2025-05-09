@@ -235,4 +235,71 @@ public class CommandHistoryTest {
 
     }
 
+    @Test
+    public void testUndoRedo() {
+        Application app = new Application();
+
+        app.setInput("123");
+        app.inputButton.click();
+
+        app.setInput("456");
+        app.inputButton.click();
+
+        app.setInput("789");
+        app.inputButton.click();
+
+        assertEquals("123456789", app.getEditor().getText());
+
+        app.undoButton.click();
+        assertEquals("123456", app.getEditor().getText());
+
+        app.undoButton.click();
+        assertEquals("123", app.getEditor().getText());
+
+        app.undoButton.click();
+        assertEquals("", app.getEditor().getText());
+
+        app.undoButton.click();
+        assertEquals("", app.getEditor().getText());
+
+        app.undoButton.click();
+        assertEquals("", app.getEditor().getText());
+    }
+
+    @Test
+    public void testCutPasteUndo() {
+        Application app = new Application();
+
+        app.setInput("123456");
+        app.inputButton.click();
+
+        app.cutButton.click();
+        assertEquals("", app.getEditor().getText());
+        assertEquals("123456", app.getClipboard());
+
+        app.pasteButton.click();
+        assertEquals("123456", app.getEditor().getText());
+
+        app.undoButton.click();
+        assertEquals("", app.getEditor().getText());
+
+        app.undoButton.click();
+        assertEquals("123456", app.getEditor().getText());
+
+        app.undoButton.click();
+        assertEquals("", app.getEditor().getText());
+    }
+
+    @Test
+    public void testEmptyCutPaste() {
+        Application app = new Application();
+
+        app.cutButton.click();
+        assertEquals("", app.getEditor().getText());
+        assertEquals("", app.getClipboard());
+
+        app.pasteButton.click();
+        assertEquals("", app.getEditor().getText());
+    }
+
 }
