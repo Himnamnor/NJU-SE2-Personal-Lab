@@ -4,12 +4,13 @@ public class CopyCommand extends Command {
         super(app);
     }
 
+    private String backup; // 备份文本
     // The copy command isn't saved to the history since it
     // doesn't change the editor's state.
     public boolean execute() {
         //todo:add code here
         // 保存备份并将文本复制到剪贴板
-        //saveBackup();
+        backup=app.getEditor().getText();
         app.clipboard=app.getEditor().getText();
         return false; // 不将此命令保存到历史记录
     }
@@ -17,9 +18,6 @@ public class CopyCommand extends Command {
     public void undo() {
         //todo:add code here
         // 从备份恢复文本
-        if(!app.backup.isEmpty()) {
-            String lastBackup = app.backup.pop();
-            app.getEditor().setText(lastBackup);
-        }
+        app.getEditor().setText(backup);
     }
 }

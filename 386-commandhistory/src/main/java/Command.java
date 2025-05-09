@@ -29,6 +29,10 @@ public abstract class Command {
             String lastBackup = app.backup.pop();
             app.getEditor().setText(lastBackup);
         }
+        else{
+            app.backup.push("");
+            app.getEditor().setText("");
+        }
     }
 
     // The execution method is declared abstract to force all
