@@ -9,7 +9,9 @@ public class CutCommand extends Command {
     public boolean execute() {
         // 保存备份并将文本复制到剪贴板，然后删除所有文本
         //todo:add code here
-
+        saveBackup();
+        app.clipboard = app.getEditor().getText();
+        app.getEditor().deleteText();
         return true;
     }
 }
