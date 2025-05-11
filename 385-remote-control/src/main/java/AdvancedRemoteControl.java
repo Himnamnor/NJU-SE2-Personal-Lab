@@ -36,6 +36,8 @@ public class AdvancedRemoteControl extends RemoteControl {
         else{
             System.out.println("This device does not support unique function.");
         }
+
+
     }
     public static void main(String[] args) {
         // Somewhere in client code.
