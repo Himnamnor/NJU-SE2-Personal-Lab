@@ -5,6 +5,7 @@ class Button {
     public Button(String label) {
         //todo:add code here
         //initialize label
+        this.label = label;
 
     }
 
