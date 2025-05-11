@@ -9,7 +9,7 @@ public class LinearTaxCalculator implements TaxCalculator{
 
     public  double calculate(double income){
         //todo:add code here
-        return 0;
+        return income*rate+base;
     }
 
 }

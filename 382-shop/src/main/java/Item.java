@@ -8,14 +8,14 @@ public class Item implements Nameable{
     }
     public String getName(){
         //todo:add code here
-        return "";
+        return this.name;
     }
     public void setName(String n){
         name = n;
     }
     public double getPrice(){
         //todo:add code here
-        return 0;
+        return this.price;
     }
     public void setPrice(double p){
         price = p;

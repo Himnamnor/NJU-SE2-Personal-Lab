@@ -20,7 +20,7 @@ public class PizzaShop extends Shop implements Nameable{
 
         //todo:add code here
         //set the calculator
-
+        this.calculator=new LinearTaxCalculator(0.15,0.1);
     }
 
     public ArrayList<Item> getInventory(){
@@ -28,12 +28,17 @@ public class PizzaShop extends Shop implements Nameable{
     }
     public boolean buyInventory(String name){
         //todo:add code here
-
+        for(Item i : foodOfferings){
+            if(i.getName().equals(name)){
+                income+=i.getPrice();
+                return true;
+            }
+        }
         return false;
     }
     public String getName(){
         //todo:add code here
-        return "";
+        return this.companyName;
     }
     public void setName(String name){
         companyName = name;

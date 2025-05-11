@@ -20,7 +20,7 @@ public class DonutShop extends Shop implements Nameable{
 
         //todo:add code here
         //set the calculator
-
+        calculator=new SimpleTaxCalculator(0.15);
     }
 
     ArrayList<Item> menuItems = new ArrayList<Item>();
@@ -33,13 +33,17 @@ public class DonutShop extends Shop implements Nameable{
     }
     public boolean buyInventory(String name ){
         //todo:add code here
-
-
+        for(Item i : menuItems){
+            if(i.getName().equals(name)){
+                income+=i.getPrice();
+                return true;
+            }
+        }
         return false;
     }
     public String getName(){
         //todo:add code here
-        return "";
+        return this.companyName;
     }
     public void setName(String name){
         companyName = name;

@@ -8,6 +8,6 @@ public class SimpleTaxCalculator implements TaxCalculator{
         //todo:add code here
 
 
-        return 0;
+        return income*rate;
     }
 }

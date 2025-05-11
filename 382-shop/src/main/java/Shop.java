@@ -11,7 +11,7 @@ public abstract class Shop{
     public double calculateSalesTax(){
         //todo:add code here
         //use calculator to calculate tax
-        return 0;
+        return this.calculator.calculate(this.income);
     }
 
     public static void main(String args[]){
